@@ -29,8 +29,8 @@ def compare(item_type, first_sheet = None, second_sheet = None):
             return {'high_filename': filename_one, 'low_filename':filename_two, 'high_sheets': sheets_one, 'low_sheets': sheets_two}
         elif file_two.nsheets > file_one.nsheets:
             return {'high_filename': filename_two, 'low_filename':filename_one, 'high_sheets': sheets_two, 'low_sheets': sheets_one}
-    if item_name == 'rows':
-        if
+    if item_type == 'rows':
+        return None
 
 
 def number_of_sheets():
@@ -49,9 +49,9 @@ def compare_sheet(index, first_file, second_file):
 def compare_all_sheets():
     for sheet_idx in range(0, file_one.nsheets):
         print sheet_idx
-        compare_sheet(sheet_idx, file_one)
+        compare_sheet(sheet_idx, file_one, file_two)
         exit()
 
-
+#number_of_sheets()
 compare_all_sheets()
 #print compare('sheets')
