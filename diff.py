@@ -18,7 +18,13 @@ sheets_no_two = file_two.nsheets
 sheets_one = file_one.sheet_names()
 sheets_two = file_two.sheet_names()
 
-print '%s -> %s \n %s -> %s' % (filename_one,sheets_no_one,filename_two, sheets_no_two)
+print filename_one, sheets_one
+print filename_two, sheets_two
+
+print 'Missing sheets in ' + filename_two  + '->' + ' , '.join(sheet for sheet in sheets_one if sheet not in sheets_two)
+print 'Missing sheets in ' + filename_one  + '->' + ' , '.join(sheet for sheet in sheets_two if sheet not in sheets_one)
+
+#print '%s -> %s \n %s -> %s' % (filename_one,sheets_no_one,filename_two, sheets_no_two)
 
 
 def compare(item_type, first_sheet = None, second_sheet = None):
@@ -52,6 +58,6 @@ def compare_all_sheets():
         compare_sheet(sheet_idx, file_one, file_two)
         exit()
 
-#number_of_sheets()
+number_of_sheets()
 compare_all_sheets()
 #print compare('sheets')
