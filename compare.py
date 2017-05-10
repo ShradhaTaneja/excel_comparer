@@ -19,7 +19,7 @@ sheets_no_two = file_two.nsheets
 sheets_one = file_one.sheet_names()
 sheets_two = file_two.sheet_names()
 
-print sheets_one, sheets_two
+#print sheets_one, sheets_two
 
 def log_comparison(error, position, file1_val, file2_val):
     comparison = {}
@@ -28,7 +28,7 @@ def log_comparison(error, position, file1_val, file2_val):
     comparison[filename_one.upper()] = file1_val
     comparison[filename_two.upper()] = file2_val
     final.append(comparison)
-    print comparison
+    #print comparison
 
 def compare_sheet(sheet_name, sheet1, sheet2):
     for rownum in range(sheet1.nrows):
@@ -44,12 +44,26 @@ def compare_sheet(sheet_name, sheet1, sheet2):
                     log_comparison('Unequal Value', 'Row %d Col %d' % (rownum+1, colnum+1), c1, c2)
 
 def display_comparison():
+    print '_'*100, '\n'
+    print '\t\t\t [ Comparison Results ] '
+    print '_'*100
+    print '\n'
     print tabulate(final, headers='keys', tablefmt = 'grid')
+    print '_'*100
+    print '\tThank you for using our script. \n\tFor any queries or suggestions please drop in a mail at shradha.taneja@gmail.com'
+    print '_'*100
 
 
 def start():
-    print '-'*20
+    print '_'*100
+    print '\n\t\t\t Comparing [%s] with [%s] \n' % (filename_one.upper(), filename_two.upper())
+    print '_'*100
+    print ' List of sheets in [%s] : ' % filename_one.upper()
+    for a in sheets_one:
+        print '\t - ', a
+    print '_'*100, '\n'
     for a_sheet in sheets_one:
+        print ' > comparing sheet %s ...' % (a_sheet)
         sheet1 = file_one.sheet_by_name(a_sheet)
         try:
             sheet2 = file_two.sheet_by_name(a_sheet)
@@ -57,7 +71,7 @@ def start():
             log_comparison('Missing Sheet', a_sheet, '[exists]', '--')
             continue
         compare_sheet(a_sheet, sheet1, sheet2)
-    print 'comparing'
+    #print 'comparing'
 
 start()
 display_comparison()
