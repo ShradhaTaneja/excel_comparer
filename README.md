@@ -4,4 +4,5 @@ This script, intended for personal use, compares two excel sheets, with same num
 
 
 ## Next Update : 
-Will be updated into a pytho executable to run on windows machines. 
+
+Will be updated into a python executable to run on windows machines. 
